@@ -1,31 +1,65 @@
-<form method="POST">
-	{{ form.csrf_token }} 
-    {{ form.summ.label }} {{ form.summ() }} 
-    {% if form.summ.errors %}
-    <ul class=errors>
-    {% for error in form.summ.errors %}
-      <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-  	{% endif %}
-    <br />
-    {{ form.currency.label }} {{ form.currency() }} 
-    {% if form.currency.errors %}
-    <ul class=errors>
-    {% for error in form.currency.errors %}
-      <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-  	{% endif %}
-    <br />
-    {{ form.description.label }} {{ form.description() }} 
-    {% if form.description.errors %}
-    <ul class=errors>
-    {% for error in form.description.errors %}
-      <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-  	{% endif %}
-    <br />
-    {{ form.submit() }}
-</form>
+<html>
+  <head>
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+  </head>
+  <body>
+  	<form method="POST" action="switch">
+  	  {{ form.csrf_token }} 
+  	  <div class="vertical-center">
+		  <div class="container">
+		  	<div class="row">
+		  	  <div class="col-sm-4"></div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.amount.label }}
+		  	  </div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.amount(class='btn-block') }}
+		  	  	{% if form.amount.errors %}
+		  	  	<p>
+		  	  	{% for error in form.amount.errors %}
+		  	  	  <p class="errors">* {{ error }}</p>
+		  	  	{% endfor %}
+		  	  	</p>
+		  	  	{% endif %} 
+		  	  </div>
+		  	  <div class="col-sm-4"></div>
+		  	</div>
+		  	</br></br>
+		  	<div class="row">
+		  	  <div class="col-sm-4"></div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.currency.label }}
+		  	  </div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.currency(class='btn-block') }}
+		  	  </div>
+		  	  <div class="col-sm-4"></div>
+		  	</div>
+		  	</br></br>
+		  	<div class="row">
+		  	  <div class="col-sm-4"></div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.description.label }}
+		  	  </div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.description(class='btn-block') }}
+		  	  </div>
+		  	  <div class="col-sm-4"></div>
+		  	</div>
+		  	</br></br>
+		  	<div class="row">
+		  	  <div class="col-sm-4"></div>
+		  	  <div class="col-sm-2"></div>
+		  	  <div class="col-sm-2">
+		  	  	{{ form.submit(class='btn btn-info btn-block') }}
+		  	  </div>
+		  	  <div class="col-sm-4"></div>
+		  	</div>
+		  </div>
+		</div>
+  	</form>   
+  </body>
+</html>

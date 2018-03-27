@@ -1,3 +1,20 @@
-<form method="POST" action="https://tip.pay-trio.com/ru/">
-    {{ form.submit() }}
-</form>
+<html>
+  <head>
+    <title>TIP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/styles.css') }}">
+  </head>
+  <body>
+  	<form method="POST" action="https://tip.pay-trio.com/ru/">
+  		{{ form.csrf_token }}
+  		{{ form.amount() }} 
+  		{{ form.currency() }} 
+  		{{ form.shop_id() }} 
+  		{{ form.sign() }} 
+  		{{ form.shop_invoice_id() }} 
+  		{{ form.description() }} 
+  	  {{ form.submit(class='btn btn-info') }}
+  	</form>
+  </body>
+</html>
